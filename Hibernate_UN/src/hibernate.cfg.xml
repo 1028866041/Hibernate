@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
+    <property name="hibernate.connection.username">mc</property>
+    <property name="hibernate.connection.password">meichao</property>
+
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+    <!--
+    <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+    <property name="hibernate.current_session_context_class">thread</property>-->
+
+    <!--hbm2ddl属性:create表先删除再创建,update改变已有表结构,
+        create-drop:sesionFactory关闭时自动撤销,validate每次加载hibernate时校验表结构-->
+    <property name="hibernate.hbm2ddl.auto">create</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+
+    <!--不进行Validation provider-->
+    <property name="javax.persistence.validation.mode">none</property>
+
+    <mapping resource="com/myself/model/User.hbm.xml"/>
+    <mapping class="com.myself.model.User"/>
+
+</session-factory>
+</hibernate-configuration>
